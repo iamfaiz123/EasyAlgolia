@@ -6,7 +6,9 @@ mod test {
     #[test]
     fn test_client_builder() {
         let app_id = "123";
-        let mut client = ClientBuilder::new().set_api_key(app_id).set_application_id(app_id);
+        let mut client = ClientBuilder::new()
+            .set_api_key(app_id)
+            .set_application_id(app_id);
         // Add assertions or other test logic here
         assert!(true)
     }

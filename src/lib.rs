@@ -1,22 +1,24 @@
-//! Easy Algolia is unofficial Rust client for algolia admin to update and insert data in Algolia Search Engine
+//! Easy Algolia is unofficial Rust client for algolia admin to update and insert data in Algolia
+//! Search Engine
 
 pub mod client_builder;
 pub mod error;
 use secrecy::Secret;
 pub mod helper_traits;
 use crate::helper_traits::ObjectId;
-pub struct Client{
+pub struct Client {
     api_key: Secret<String>,
     application_id: Secret<String>,
 }
 
 impl Client {
-    
-
     pub fn new(api_key: &str, application_id: &str) -> Self {
-             Self { api_key: Secret::new(String::from(api_key)), application_id: Secret::new(String::from(api_key)) }
+        Self {
+            api_key: Secret::new(String::from(api_key)),
+            application_id: Secret::new(String::from(api_key)),
+        }
     }
-    
+
     pub async fn update_document<T>(&self, index: &String, document: T)
     where
         T: serde::Serialize + ObjectId,

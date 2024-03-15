@@ -2,11 +2,19 @@
 //! Should be used when need to build client with custom setting
 //! can be used to build client from environment variables
 
-use crate::error::EasyAlgoliaError;
-use crate::{error::ErrorKind, Client};
+use crate::{
+    error::{
+        EasyAlgoliaError,
+        ErrorKind,
+    },
+    Client,
+};
 use std::mem;
 
-use secrecy::{ExposeSecret, Secret};
+use secrecy::{
+    ExposeSecret,
+    Secret,
+};
 pub struct ClientBuilder {
     application_id: Option<Secret<String>>,
     api_key: Option<Secret<String>>,
@@ -14,11 +22,12 @@ pub struct ClientBuilder {
 
 impl ClientBuilder {
     /// create a new client builder with credentials set to None
-    /// calling build on unset variables client builder will result in [EasyAlgoliaError](crate::error::EasyAlgoliaError)
+    /// calling build on unset variables client builder will result in
+    /// [EasyAlgoliaError](crate::error::EasyAlgoliaError)
     // # Examples
     /// ```
-    /// use EasyAlgolia::client_builder::ClientBuilder ;
-    /// let algolia_client_builder:ClientBuilder = ClientBuilder::new();
+    /// use EasyAlgolia::client_builder::ClientBuilder;
+    /// let algolia_client_builder: ClientBuilder = ClientBuilder::new();
     /// ```
     pub fn new() -> Self {
         Self {
@@ -32,8 +41,8 @@ impl ClientBuilder {
     /// * `application_id` - original string reference.
     /// # Examples
     /// ```
-    /// use EasyAlgolia::client_builder::ClientBuilder ;
-    /// let mut algolia_client_builder:ClientBuilder = ClientBuilder::new().set_application_id("123") ;
+    /// use EasyAlgolia::client_builder::ClientBuilder;
+    /// let mut algolia_client_builder: ClientBuilder = ClientBuilder::new().set_application_id("123");
     /// ```
     pub fn set_application_id(mut self, app_id: &str) -> Self {
         self.application_id = Some(Secret::new(String::from(app_id)));
@@ -46,8 +55,8 @@ impl ClientBuilder {
     ///
     /// # Examples
     /// ```
-    /// use EasyAlgolia::client_builder::ClientBuilder ;
-    /// let algolia_client_builder:ClientBuilder = ClientBuilder::new().set_api_key("123") ;
+    /// use EasyAlgolia::client_builder::ClientBuilder;
+    /// let algolia_client_builder: ClientBuilder = ClientBuilder::new().set_api_key("123");
     /// ```
     pub fn set_api_key(mut self, app_id: &str) -> Self {
         self.api_key = Some(Secret::new(String::from(app_id)));
@@ -59,14 +68,16 @@ impl ClientBuilder {
     /// returns error if either are not set
     /// # Examples
     /// ```
-    /// use EasyAlgolia::client_builder::ClientBuilder ;
+    /// use EasyAlgolia::client_builder::ClientBuilder;
     /// let mut algolia_client = ClientBuilder::new()
-    ///                         .set_application_id("123")
-    ///                         .set_api_key("123").build().unwrap();
+    ///     .set_application_id("123")
+    ///     .set_api_key("123")
+    ///     .build()
+    ///     .unwrap();
     /// ```
     /// # Error
-    /// returns [`Err(EasyAlgoliaError)`](crate::error::EasyAlgoliaError) if either of the application_id or api_key is not set
-    /// ```panics
+    /// returns [`Err(EasyAlgoliaError)`](crate::error::EasyAlgoliaError) if either of the
+    /// application_id or api_key is not set ```panics
     /// use EasyAlgolia::client_builder::ClientBuilder ;
     /// // result in panic
     /// let mut algolia_client = ClientBuilder::new().build().unwrap();
@@ -98,8 +109,7 @@ impl ClientBuilder {
     /// let mut algolia_client = ClientBuilder::build_from_env().unwrap();
     /// ```
 
-    pub fn build_from_env<'a>()-> Result<Client, EasyAlgoliaError<'a>>{
-
-       todo!()
+    pub fn build_from_env<'a>() -> Result<Client, EasyAlgoliaError<'a>> {
+        todo!()
     }
 }

@@ -8,7 +8,7 @@
 # This crate is still in development 
 
 ###  Usage 
-```
+```rust
    use EasyAlgolia::client_builder::ClientBuilder ;
    fn main()<(),std:io::Error>{
        let client = ClientBuilder::build_from_env()?;

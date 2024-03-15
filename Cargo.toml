@@ -1,0 +1,9 @@
+[package]
+name = "EasyAlgolia"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+secrecy = "0.8.0"
+serde = "1.0.197"

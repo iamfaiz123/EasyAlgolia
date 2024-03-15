@@ -6,7 +6,6 @@ edition = "2021"
 license = "MIT"
 authors = ["Faizal Khan <faizalkhn98641@gmail.com>"]
 repository = "https://github.com/iamfaiz123/EasyAlgolia"
-
 [dependencies]
 
 secrecy = "0.8.0"

@@ -1,4 +1,5 @@
 # This crate is still in development 
+# [crate link](https://crates.io/crates/EasyAlgolia)
 
 # EasyAlgolia is a Rust crate designed for utilizing the Algolia admin client. It simplifies the process of updating and inserting documents into Algolia's search index.
 

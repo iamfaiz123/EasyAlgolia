@@ -9,7 +9,7 @@
 ###  Usage 
 ```rust
     #[tokio::main]
-    async fn main() -> Result<(), EasyAlgoliaError<'static>> {
+    async fn main() -> Result<(), EasyAlgoliaError> {
         dotenv().ok();
         let client = ClientBuilder::build_from_env()?;
         // for raw values, Object ids are provided from algolia or can be explicitly put into json document

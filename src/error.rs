@@ -1,5 +1,6 @@
 ///! Error from EasyAlgolia
 use core::fmt;
+use reqwest::Request;
 use std::error::Error;
 
 #[derive(Debug)]
@@ -11,6 +12,12 @@ pub enum ErrorKind {
 pub struct EasyAlgoliaError<'a> {
     error_kind: ErrorKind,
     cause: Option<&'a str>,
+}
+
+impl From<reqwest::Error> for EasyAlgoliaError<'_> {
+    fn from(e: reqwest::Error) -> Self {
+        EasyAlgoliaError::new(ErrorKind::RequestError, None)
+    }
 }
 impl<'a> EasyAlgoliaError<'a> {
     pub(crate) fn new(error_kind: ErrorKind, cause: Option<&'a str>) -> Self {

@@ -1,5 +1,45 @@
-comment_width = 100
-format_code_in_doc_comments = true
-imports_granularity = "Crate"
-imports_layout = "Vertical"
-wrap_comments = true
+# comment_width = 100
+# format_code_in_doc_comments = true
+# imports_granularity = "Crate"
+# imports_layout = "Vertical"
+# wrap_comments = true
+
+
+
+
+
+# use EasyAlgolia::{
+#     client_builder::ClientBuilder,
+#     error::EasyAlgoliaError,
+#     Index,
+# };
+
+# #[tokio::main]
+# async fn main() -> Result<(), EasyAlgoliaError<'static>> {
+
+#     let client = ClientBuilder::build_from_env()?;
+    
+#     // for raw values, Object ids are provided from algolia
+#     let data = serde_json::json!({
+#         "name":" Hello world ! ",
+#         "about":"  I Love rust "
+#     });
+
+#     let my_index: Index = "Test".into();
+#     let _ = client.update_document_async(&my_index, data).await;
+
+#     Ok(())
+# }
+
+
+# [dependencies]
+# EasyAlgolia = { version = "1.0.1", path = "../.." }
+# dotenvy = "0.15.7"
+# serde_json = "1.0.114"
+# tokio = { version = "1.36.0", features = ["full"] }
+
+
+
+
+# ALGOLIA_APPLICATION_ID = QD5U6FAC09
+# ALGOLIA_API_KEY = 900d13e8ece6d69abd7d03cdcd92120a

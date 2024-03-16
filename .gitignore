@@ -1,1 +1,6 @@
 /target
+/examples/async_client/target
+/examples/custom_document/target
+/examples/async_client/.env
+/examples/custom_document/.env
+

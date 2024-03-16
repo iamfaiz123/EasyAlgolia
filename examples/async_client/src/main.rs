@@ -18,8 +18,6 @@ async fn main() -> Result<(), EasyAlgoliaError> {
     });
 
     let my_index: Index = "Test".into();
-    let a = client.put_document_async(&my_index, data).await;
-
-
+    let _ = client.put_document_async(&my_index, data).await;
     Ok(())
 }

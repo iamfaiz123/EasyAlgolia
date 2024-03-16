@@ -6,6 +6,7 @@ use std::error::Error;
 pub enum ErrorKind {
     RequestError,
     ClientBuilderError,
+    ClientError
 }
 
 pub struct EasyAlgoliaError {
@@ -50,6 +51,7 @@ impl<'a> EasyAlgoliaError {
         match error_kind {
             ErrorKind::ClientBuilderError => Self { error_kind, cause },
             ErrorKind::RequestError => Self { error_kind, cause },
+            ErrorKind::ClientError => Self { error_kind, cause }
         }
     }
 }

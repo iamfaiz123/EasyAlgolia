@@ -1,5 +1,5 @@
 
-use easyalgolia::{
+use EasyAlgolia::{
     algoliaobject::AlgoliaObject,
     client_builder::ClientBuilder,
     error::EasyAlgoliaError,

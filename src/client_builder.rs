@@ -83,18 +83,18 @@ impl ClientBuilder {
     /// let mut algolia_client = ClientBuilder::new().build().unwrap();
     /// ```
 
-    pub fn build<'a>(&mut self) -> Result<Client, EasyAlgoliaError<'a>> {
+    pub fn build<'a>(&mut self) -> Result<Client, EasyAlgoliaError> {
         if self.api_key.is_some() && self.application_id.is_some() {
             let api_key = mem::take(&mut self.api_key);
             let application_id = mem::take(&mut self.application_id);
             return Ok(Client::new(
-                application_id.unwrap().expose_secret(),
                 api_key.unwrap().expose_secret(),
+                application_id.unwrap().expose_secret(),
             ));
         } else {
             Err(EasyAlgoliaError::new(
                 ErrorKind::ClientBuilderError,
-                Some(" unable to fetch client id or api key "),
+                Some(" unable to fetch client id or api key ".into()),
             ))
         }
     }
@@ -103,13 +103,26 @@ impl ClientBuilder {
     /// if api_key and app_id are set, `Err(EasyAlgoliaError)` will be returned
     /// returns error if either are not set
     /// # Environment variables
-    /// `APPLICATION_ID` and `APP_ID`
+    /// `ALGOLIA_APPLICATION_ID` and `ALGOLIA_API_KEY`
     /// # Examples
     /// ```ignore
     /// let mut algolia_client = ClientBuilder::build_from_env().unwrap();
     /// ```
 
-    pub fn build_from_env<'a>() -> Result<Client, EasyAlgoliaError<'a>> {
-        todo!()
+    pub fn build_from_env<'a>() -> Result<Client, EasyAlgoliaError> {
+        use std::env;
+        let app_id = env::var("ALGOLIA_APPLICATION_ID").map_err(|_| {
+            EasyAlgoliaError::new(ErrorKind::ClientBuilderError, Some("failed to fetch desireed Envviroment variables, ALGOLIA_APPLICATION_ID is not set. ".into()))
+        })?;
+        let api_key = env::var("ALGOLIA_API_KEY").map_err(|_| {
+            EasyAlgoliaError::new(
+                ErrorKind::ClientBuilderError,
+                Some("unable to load env ,ALGOLIA_API_KEY is not set".into()),
+            )
+        })?;
+
+        let client = Client::new(&api_key, &app_id);
+
+        Ok(client)
     }
 }

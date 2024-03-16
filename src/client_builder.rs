@@ -83,7 +83,7 @@ impl ClientBuilder {
     /// let mut algolia_client = ClientBuilder::new().build().unwrap();
     /// ```
 
-    pub fn build<'a>(&mut self) -> Result<Client, EasyAlgoliaError<'a>> {
+    pub fn build<'a>(&mut self) -> Result<Client, EasyAlgoliaError> {
         if self.api_key.is_some() && self.application_id.is_some() {
             let api_key = mem::take(&mut self.api_key);
             let application_id = mem::take(&mut self.application_id);
@@ -94,7 +94,7 @@ impl ClientBuilder {
         } else {
             Err(EasyAlgoliaError::new(
                 ErrorKind::ClientBuilderError,
-                Some(" unable to fetch client id or api key "),
+                Some(" unable to fetch client id or api key ".into()),
             ))
         }
     }
@@ -109,15 +109,15 @@ impl ClientBuilder {
     /// let mut algolia_client = ClientBuilder::build_from_env().unwrap();
     /// ```
 
-    pub fn build_from_env<'a>() -> Result<Client, EasyAlgoliaError<'a>> {
+    pub fn build_from_env<'a>() -> Result<Client, EasyAlgoliaError> {
         use std::env;
         let app_id = env::var("ALGOLIA_APPLICATION_ID").map_err(|_| {
-            EasyAlgoliaError::new(ErrorKind::ClientBuilderError, Some("failed to fetch desireed Envviroment variables, ALGOLIA_APPLICATION_ID is not set. "))
+            EasyAlgoliaError::new(ErrorKind::ClientBuilderError, Some("failed to fetch desireed Envviroment variables, ALGOLIA_APPLICATION_ID is not set. ".into()))
         })?;
         let api_key = env::var("ALGOLIA_API_KEY").map_err(|_| {
             EasyAlgoliaError::new(
                 ErrorKind::ClientBuilderError,
-                Some("unable to load env ,ALGOLIA_API_KEY is not set "),
+                Some("unable to load env ,ALGOLIA_API_KEY is not set".into()),
             )
         })?;
 

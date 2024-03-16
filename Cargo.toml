@@ -1,6 +1,8 @@
-workspace = { members = [ "examples/apple", "examples/async-client", "examples/async_client","examples/client", "macros"] }
+workspace = { members = ["examples/custom_document"] }
+
+
 [package]
-name = "EasyAlgolia"
+name = "easyalgolia"
 description = "EasyAlgolia is a Rust crate designed for utilizing the Algolia admin client. It simplifies the process of updating and inserting documents into Algolia's search index."
 version = "1.0.1"
 edition = "2021"
@@ -16,5 +18,5 @@ secrecy = "0.8.0"
 serde = "1.0.197"
 serde_json = "1.0.114"
 syn = "2.0.52"
-uuid = { version = "1.7.0" , features = ["v4"] }
+
 

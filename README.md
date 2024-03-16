@@ -24,3 +24,8 @@
         Ok(())
 }
   ```
+
+# todo
+### Admin API key Curd operation
+### Delete by Query
+### Get Objects from Index

@@ -1,6 +1,6 @@
-//! Easy Algolia is unofficial Rust client for algolia admin to update and insert data in Algolia
+//! easy Algolia is unofficial Rust client for algolia admin to update and insert data in Algolia
 //! Search Engine
-
+#[allow(non_snake_case)]
 #[allow(non_snake_case)]
 pub mod client_builder;
 pub mod error;
@@ -38,8 +38,8 @@ impl From<&str> for Index {
 }
 
 /// setting for Algolia Index
-/// This seeting can be loaded and can bet set from backend using [client.update_index_setting](crate::Client::update_index_setting) method
-/// ```ignore
+/// This seeting can be loaded and can bet set from backend using
+/// [client.update_index_setting](crate::Client::update_index_setting) method ```ignore
 ///    let my_index:Index = "MyIndex".into() ;
 ///    let mut setting = client.get_index_setting(my_index).await;
 ///    // set default setting for index
@@ -401,11 +401,11 @@ impl Client {
             Err(err) => Err(err.into()),
         }
     }
-    
+
     /// get settings for a given index
-    /// return setting from this function can be modfied and set, key sets to None will be replaced to default
-    /// ```ignore
-    ///    let index:Index = "SomeIndex".into(); 
+    /// return setting from this function can be modfied and set, key sets to None will be replaced
+    /// to default ```ignore
+    ///    let index:Index = "SomeIndex".into();
     ///    let setting = client.get_index_setting().await?;
     /// ```
     pub async fn get_index_setting<T: AlgoliaObject>(
@@ -448,18 +448,17 @@ impl Client {
         }
     }
 
-
     /// upload settings for a given index
     /// key sets to None will be replaced to default
     /// ```ignore
-    ///    let index:Index = "SomeIndex".into(); 
+    ///    let index:Index = "SomeIndex".into();
     ///    let index_setting = AlgoliaIndexSetting::default();
     ///    let setting = client.update_index_setting().await?;
     /// ```
     pub async fn update_index_setting<T: AlgoliaObject>(
         &self,
         index: &Index,
-        setting: AlgoliaIndexSetting
+        setting: AlgoliaIndexSetting,
     ) -> Result<(), EasyAlgoliaError>
     where
         T: serde::Serialize + AlgoliaObject,
@@ -475,7 +474,7 @@ impl Client {
             "X-Algolia-Application-Id",
             self.application_id.expose_secret(),
         );
-        client = client.json(&setting) ;
+        client = client.json(&setting);
         match client.send().await {
             Ok(k) => {
                 if k.status() > reqwest::StatusCode::from_u16(200).unwrap()

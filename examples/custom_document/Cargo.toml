@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-easyalgolia = { version = "1.0.1", path = "../.." }
+EasyAlgolia = { version = "1.0.1", path = "../.." }
 derive = "1.0.0"
 dotenv = "0.15.0"
 dotenvy = "0.15.7"

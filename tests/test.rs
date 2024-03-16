@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod test {
-    use easyalgolia::client_builder::ClientBuilder;
+    use EasyAlgolia::client_builder::ClientBuilder;
     // Import the ClientBuilder type from the module where it's defined
 
     #[test]

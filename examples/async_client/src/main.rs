@@ -1,4 +1,4 @@
-use easyalgolia::{
+use EasyAlgolia::{
     client_builder::ClientBuilder,
     error::EasyAlgoliaError,
     Index,

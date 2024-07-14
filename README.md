@@ -6,7 +6,6 @@
 
 ![Alt text](https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Algolia_logo.svg/1200px-Algolia_logo.svg.png "a title")
 
-# This crate is still in development 
 
 ### features
 * custom Object and trait 
